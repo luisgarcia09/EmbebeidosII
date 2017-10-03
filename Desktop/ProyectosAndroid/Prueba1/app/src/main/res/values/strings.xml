@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Prueba1</string>
+    <string name="register">Registrarse</string>
+    <string name="age">Edad</string>
+    <string name="password">Contraseña</string>
+    <string name="user_name">Usuario</string>
+    <string name="name">Nombre</string>
+    <string name="login">Acceder</string>
+    <string name="UserRegister">Registrar nuevo usuario</string>
+    <string name="userArea">Área de usuario</string>
+    <string name="passwordConfirm">Confirmar contraseña</string>
+</resources>
