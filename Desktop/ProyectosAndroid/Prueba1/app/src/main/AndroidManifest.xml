@@ -6,9 +6,9 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
@@ -38,7 +38,23 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProjectsView"></activity>
+        <activity android:name=".ProjectsView"
+            android:label="@string/projects">
+            <intent-filter>
+                <action android:name="android.intent.action.PROJECTS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ProjectDetail"
+            android:label="@string/project">
+            <intent-filter>
+                <action android:name="android.intent.action.PROJECTS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
