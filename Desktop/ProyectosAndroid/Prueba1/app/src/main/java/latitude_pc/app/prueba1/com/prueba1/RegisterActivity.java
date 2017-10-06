@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,18 +22,20 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
-        final EditText etUserName = (EditText) findViewById(R.id.etUserName);
-        final EditText etName = (EditText) findViewById(R.id.etName);
-        final EditText etPassword = (EditText) findViewById(R.id.etPassword);
-        final EditText etPasswordConfirm = (EditText) findViewById(R.id.etPasswordConfirm);
-
         final Button btnRegister = (Button) findViewById(R.id.btnRegister);
 
         btnRegister.setOnClickListener(new View.OnClickListener(){
 
             public void onClick(View v){
-                final String name = etName.getText().toString();
+                final EditText etUserName = (EditText) findViewById(R.id.etNewUserName);
+                final EditText etName = (EditText) findViewById(R.id.etName);
+                final EditText etPassword = (EditText) findViewById(R.id.etNewPassword);
+                final EditText etPasswordConfirm = (EditText) findViewById(R.id.etPasswordConfirm);
+                final String nombre = etName.getText().toString();
+                final String user = etUserName.getText().toString();
+                final String Pass = etPassword.getText().toString();
+                final String Pass2 = etPasswordConfirm.getText().toString();
+                /*final String name = etName.getText().toString();
                 final String username = etUserName.getText().toString();
                 final String password = etPassword.getText().toString();
 
@@ -42,10 +45,28 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
-                            if (success) {
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                RegisterActivity.this.startActivity(intent);
-                            } else {
+                            if (success) {*/
+                            if(nombre.isEmpty() || user.isEmpty() || Pass.isEmpty() || Pass2.isEmpty()) {
+                                Toast.makeText(RegisterActivity.this,"Ingrese los datos que falten",Toast.LENGTH_SHORT).show();
+                            }
+                            else {
+                                if(!Pass.equals(Pass2))
+                                    Toast.makeText(RegisterActivity.this,"Las contraseÃ±as no coinciden",Toast.LENGTH_SHORT).show();
+                                else {
+                                    try {
+
+                                        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                                        intent.putExtra("User",user);
+                                        intent.putExtra("Pass",Pass);
+                                        RegisterActivity.this.startActivity(intent);
+                                    }
+                                    catch (Exception ex){
+                                        Toast.makeText(RegisterActivity.this,ex.getMessage(),Toast.LENGTH_SHORT).show();
+
+                                    }
+                                }
+                            }
+                            /*} else {
                                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                 builder.setMessage("Register Failed")
                                         .setNegativeButton("Retry", null)
@@ -61,8 +82,9 @@ public class RegisterActivity extends AppCompatActivity {
                 };
                 RegisterRequest registerRequest = new RegisterRequest(name, username, password, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                queue.add(registerRequest);
+                queue.add(registerRequest);*/
             }
         });
     }
 }
+
