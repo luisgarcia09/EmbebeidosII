@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Prueba1</string>
+    <string name="app_name">Embebidos</string>
     <string name="register">Registrarse</string>
     <string name="age">Edad</string>
     <string name="password">Contraseña</string>
@@ -9,4 +9,7 @@
     <string name="UserRegister">Registrar nuevo usuario</string>
     <string name="userArea">Área de usuario</string>
     <string name="passwordConfirm">Confirmar contraseña</string>
+    <string name="projects">Proyectos</string>
+    <string name="project">InformaciÃ³n</string>
+
 </resources>
